@@ -1,6 +1,5 @@
 {
 	"name": "upex-cypress",
-	"version": "12",
 	"description": "Cypress Automation",
 	"main": "index.js",
 	"scripts": {
