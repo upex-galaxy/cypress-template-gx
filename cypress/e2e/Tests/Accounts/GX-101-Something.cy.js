@@ -1,7 +1,7 @@
 
 describe('Feature', () => {
 	beforeEach(() => {
-		cy.SignIn()
+		cy.SignInCoder()
 	})
 
 	it('TSID | TC1: Validar crear cuenta exitosamente', () => {
