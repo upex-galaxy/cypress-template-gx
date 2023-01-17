@@ -50,7 +50,7 @@ export default defineConfig({
 		// baseUrl: ""
 	},
 	env:{
-
+		
 		AdminUser:{
 
 			username: "Admin",
