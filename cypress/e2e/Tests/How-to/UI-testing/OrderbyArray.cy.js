@@ -38,7 +38,7 @@ context('Feature KT: Filtrar productos por nombre o precio', () => {
         })
 
 	})
-	it.only('1234 | TC2: Validar filtrar productos por NOMBRE ASC', () => {
+	it('1234 | TC2: Validar filtrar productos por NOMBRE ASC', () => {
         // Write your test case two here
 
         // Given:
@@ -54,8 +54,6 @@ context('Feature KT: Filtrar productos por nombre o precio', () => {
             cy.get('[data-test="product_sort_container"]').select(OrderNameASC).then(()=>{
                 
                 cy.log(`✅ Order Anterior: ${initOrder}`)
-                const array = Cypress.env('itemNames', [])
-                cy.log(`✅ Order Vacío: ${array}`)
                 cy.getActualOrder().then(()=>{
                     const finalOrder = Cypress.env('itemNames')
         
