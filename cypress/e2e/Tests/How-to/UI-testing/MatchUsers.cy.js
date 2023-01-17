@@ -2,7 +2,7 @@ context('Orange Test for watching', () => {
 
     beforeEach(() => {
         
-        cy.Login('Admin', 'admin123')
+        cy.LoginOrange('Admin', 'admin123')
 	})
 	// -- Start: Cypress Tests --
 	it('Test User in PIM is equal to user in Profile', () => {

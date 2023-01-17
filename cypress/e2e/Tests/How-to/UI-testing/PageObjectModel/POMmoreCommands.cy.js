@@ -3,7 +3,7 @@ const {username, password} = Cypress.env('AdminUser')
 describe('user logs in', () => {
     
     beforeEach(() => {
-        cy.Login(username, password)
+        cy.LoginOrange(username, password)
     });
 
     it('click on X', () => {
