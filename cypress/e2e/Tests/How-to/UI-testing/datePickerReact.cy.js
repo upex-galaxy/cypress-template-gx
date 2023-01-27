@@ -39,7 +39,7 @@ describe('✅SpaceBeyond | Datepicker | Buscar destino por fecha y grupo de pasa
 		})
 
         // Second DatePicker:
-        cy.waitUntil(()=> cy.get("[data-react-toolbox='dialog']").then(datePicker => datePicker.length == 0))
+        cy.wait(1000)
 
 		cy.get("[data-react-toolbox='date-picker'] input").eq(1).click() // Open Returning:
 
