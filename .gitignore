@@ -3,7 +3,6 @@
 node_modules/
 cypress/videos
 cypress/downloads
-cypress/screenshots
 mochawesome-report/
 reports/
 mochawesome.json
