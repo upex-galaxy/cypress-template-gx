@@ -116,5 +116,5 @@ jobs:
                 SLACK_USERNAME: Ari✨
                 SLACK_MESSAGE: ':test_tube: Nueva Ejecución de Prueba actualizado en Jira-Xray :rocket:'
                 SLACK_COLOR: ${{ job.status }}
-                SLACK_ICON: https://i.imgur.com/peg9swL.png
+                SLACK_ICON: https://i.imgur.com/q9kvQCp_d.webp?maxwidth=760&fidelity=grand
 
