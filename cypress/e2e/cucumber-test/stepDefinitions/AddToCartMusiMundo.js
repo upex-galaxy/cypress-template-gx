@@ -74,6 +74,6 @@ context('Agregar producto al Shopping Cart',()=>{
 
 
 
-import {cleanFetch} from '@helper/RemoveLogs.js'
+import {logConfig} from '@helper/RemoveLogs.js'
 
-cleanFetch.sendConfig()
+logConfig.removeLogs()

@@ -1,8 +1,10 @@
 //________________________________________________________________________
 // Comando predeterminado para que no ocurran errores de excepciones:
-class XhrFetch{
+class LogConfig{
 
-	sendConfig(){
+	removeLogs(){
+
+		// ** COPIA Y PEGA EN CADA SUITE QUE SE REALICE CON UN SUT DE MUCHO FETCH Y XHR O PROBLEMAS DE EXCEPCIÓN O... IMPORTA ESTA FUNCIÓN DE ESTE MÓDULO PARA APLICARLO EN EL SUITE.
 		Cypress.on('uncaught:exception', (err, runnable) => {
 			// returning false here prevents Cypress from
 			// failing the test
@@ -19,5 +21,4 @@ class XhrFetch{
 	}
 }
 
-export const cleanFetch = new XhrFetch;
-// ** COPIA Y PEGA EN CADA SUITE QUE SE REALICE CON UN SUT DE MUCHO FETCH Y XHR O PROBLEMAS DE EXCEPCIÓN 
+export const logConfig = new LogConfig;
