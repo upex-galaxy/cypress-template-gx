@@ -10,5 +10,6 @@ describe('US Example | Test Page Object Model', () => {
         User.enterUsername("UPEX")
         User.enterPassword("123456")
         User.submit()
+        // Make assertion to check user is Logged in.
     });
 });
