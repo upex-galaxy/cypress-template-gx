@@ -125,7 +125,7 @@ ___
 ___
 
 ### 🧙🏻‍♂️APRENDE Y GANA EXPERIENCIA COMO QA AUTOMATION EN UPEX GALAXY🚀 
-## LEE ESTA GUÍA: [CYPRESS AL GRANO](https://upexgalaxy6.atlassian.net/wiki/spaces/UG/pages/918130)
+## LEE ESTA GUÍA: [CYPRESS AL GRANO](https://upexgalaxy9.atlassian.net/wiki/spaces/UG/pages/1083544)
 ___
 ## Algunos Artículos de Cypress que puede interesarte:
 - [How to Install Cypress](https://testersdock.com/how-to-install-cypress/)
