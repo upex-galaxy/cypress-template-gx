@@ -1,4 +1,4 @@
-[![🤖CI Regression in QA🧪](https://github.com/upex-galaxy/L1-cypex-demo/actions/workflows/CI-regressionQA.yml/badge.svg)](https://github.com/upex-galaxy/L1-cypex-demo/actions/workflows/CI-regressionQA.yml)
+[![🤖CI Regression in QA🧪](https://github.com/upex-galaxy/cypress-js/actions/workflows/regression.yml/badge.svg)](https://github.com/upex-galaxy/cypress-js/actions/workflows/regression.yml)
 
 [![vscode-logo]][vscode-site] [![cypress-logo]][cypress-site] [![javascript-logo]][javascript-site]
 
