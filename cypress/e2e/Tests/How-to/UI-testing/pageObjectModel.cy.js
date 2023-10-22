@@ -18,6 +18,3 @@ context('This is your test suite title', () => {
 		});
 	});
 });
-
-import { removeLogs } from '@helper/RemoveLogs';
-removeLogs();

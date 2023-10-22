@@ -57,16 +57,16 @@ jobs:
                   path: mochawesome-report
             #* if: always() es un comando YML condicional: Si pasa o no el paso anterior, corre este Paso.
 
-            #todo: IMPORTING JIRA...
-            - name: ✅Import Test Results to Xray
-              if: always()
-              uses: mikepenz/xray-action@v2
-              with: #! EDITAR AQUÍ EL TEST EXECUTION (TX) DE JIRA DONDE SE CARGARÁN LOS TESTS:
-                  username: ${{secrets.XRAY_CLIENT_ID}}
-                  password: ${{secrets.XRAY_CLIENT_SECRET}}
-                  testFormat: 'junit'
-                  testPaths: 'reports/test-results.xml'
-                  #todo: CAMBIA el TX por tu propio TX de tu tarea.
-                  testExecKey: 'GX-1'
-                  #todo: CAMBIA el ID del Proyecto del que pertenece tu tarea.
-                  projectKey: 'GX'
+            # #todo: IMPORTING JIRA...
+            # - name: ✅Import Test Results to Xray
+            #   if: always()
+            #   uses: mikepenz/xray-action@v2
+            #   with: #! EDITAR AQUÍ EL TEST EXECUTION (TX) DE JIRA DONDE SE CARGARÁN LOS TESTS:
+            #       username: ${{secrets.XRAY_CLIENT_ID}}
+            #       password: ${{secrets.XRAY_CLIENT_SECRET}}
+            #       testFormat: 'junit'
+            #       testPaths: 'reports/test-results.xml'
+            #       #todo: CAMBIA el TX por tu propio TX de tu tarea.
+            #       testExecKey: 'GX-1'
+            #       #todo: CAMBIA el ID del Proyecto del que pertenece tu tarea.
+            #       projectKey: 'GX'
