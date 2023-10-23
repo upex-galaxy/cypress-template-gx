@@ -1,9 +1,6 @@
 #!ESTE ARCHIVO ES UN TEMPLATE, NO CAMBIARLO EN ABSOLUTO.
-#todo: Cambiar solamente lo que viene después de "(Run Cypress)"
-#todo: Utiliza el mismo nombre de la Historia de Usuario con su ID.
-name: 🧪Cypress In-Sprint Testing
-#todo: Solamente colocar el ID de la US que se va a correr. Cambiar el actual:
-run-name: ${{github.actor}}👨🏻‍🔬 ran TestSuite in ${{github.ref_name}}
+name: 🧪Example Test in CI Pipeline with Cypress
+run-name: ${{github.actor}}👨🏻‍🔬 ran Test in ${{github.ref_name}}
 
 # on:
 #     push:
