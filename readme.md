@@ -1,8 +1,8 @@
-[![🤖CI Regression in QA🧪](https://github.com/upex-galaxy/L1-cypex-demo/actions/workflows/CI-regressionQA.yml/badge.svg)](https://github.com/upex-galaxy/L1-cypex-demo/actions/workflows/CI-regressionQA.yml)
+[![🤖CI Regression in QA🧪](https://github.com/upex-galaxy/cypress-js/actions/workflows/regression.yml/badge.svg)](https://github.com/upex-galaxy/cypress-js/actions/workflows/regression.yml)
 
 [![vscode-logo]][vscode-site] [![cypress-logo]][cypress-site] [![javascript-logo]][javascript-site]
 
-# 🧪Testing Automation - Cypress 12👨🏻‍🚀 + Cucumber
+# 🧪Testing Automation - Cypress 13👨🏻‍🚀 + Cucumber
 
 ![UPEX's Banners (linkedin) (1)](https://user-images.githubusercontent.com/91127281/189470339-acea5782-16f1-4f06-9ce0-df54fd3ead9d.png)
 
@@ -158,7 +158,7 @@ Ahora el Directorio de UPEX Galaxy, será mucho más simple.
 
 ---
 
-# 🚩NIVELES DE TESTER (QA ENGINEER) en UPEX Galaxy:
+# 🚩NIVELES DE TESTER QA en UPEX Galaxy:
 
 El programa **UPEX Galaxy** está diseñado para guiar a los Testers a través de 2 Etapas (Career Paths). Cada Etapa conlleva ciertos **NIVELES** que el
 Tester debe alcanzar para llegar a su mayor **SENIORITY**:
