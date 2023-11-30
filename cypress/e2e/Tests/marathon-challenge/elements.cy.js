@@ -111,7 +111,7 @@ describe('Challenge Elements', () => {
 		cy.get('#visibleAfter').should('be.visible');
 	});
 
-	it.only('UPLOAD/DOWNLOAD - TC6: Should upload a file and download it', () => {
+	it('UPLOAD/DOWNLOAD - TC6: Should upload a file and download it', () => {
 		cy.visit('/upload-download');
 
 		cy.get('#downloadButton')
