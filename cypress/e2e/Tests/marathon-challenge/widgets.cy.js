@@ -31,11 +31,12 @@ describe('Cypress Challenge - Widgets', () => {
 		cy.step('🧪#3: Select one Color by clicking');
 		cy.get('#autoCompleteMultipleInput').type('A');
 
+		//* Este codigo está elaborado con "Alias" usando el método as() en lugar de Then:
 		cy.get('.auto-complete__menu [id*=react-select]').eq(1).as('colorToSelect');
 		cy.get('@colorToSelect').click().invoke('text').as('colorName');
 		cy.getAutocompletedValues().then(values => expect(values).includes(this.colorName));
 
-		//* Este codigo también funciona pero es para apreciar cómo se vería el assertion usando el Then:
+		//* Este codigo también funciona y hace exactamente lo mismo que el de arriba pero usando Then:
 		// cy.get('.auto-complete__menu [id*=react-select]')
 		// 	.eq(1)
 		// 	.then(colorToSelect => {
