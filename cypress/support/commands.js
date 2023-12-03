@@ -16,6 +16,18 @@ beforeEach(() => {
 	cy.intercept({ resourceType: /^(xhr|fetch)$/ }, { statusCode: 200, body: { data: 'fake data' } });
 });
 
+Cypress.Commands.add('getAutocompletedValues', () => {
+	const autocompletedValues = [];
+	return cy
+		.get('.auto-complete__multi-value__label')
+		.each(element => {
+			autocompletedValues.push(element.text());
+		})
+		.then(() => {
+			return autocompletedValues;
+		});
+});
+
 // -- This is a parent command --
 // Cypress.Commands.add('login', (email, password) => { ... })
 //
