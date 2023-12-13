@@ -4,12 +4,11 @@
 	"workbench.iconTheme": "vscode-icons",
 	"cSpell.language": "en,es",
 	"terminal.integrated.defaultProfile.windows": "Git Bash",
-	"editor.defaultFormatter": "esbenp.prettier-vscode",
 	"[javascript]": {
-		"editor.defaultFormatter": "esbenp.prettier-vscode"
+		"editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
 	},
 	"[Typescript]": {
-		"editor.defaultFormatter": "esbenp.prettier-vscode"
+		"editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
 	},
 	"[feature]": {
 		"editor.defaultFormatter": "alexkrechik.cucumberautocomplete"
@@ -24,6 +23,10 @@
 		"strings": true,
 		"other": true
 	},
+	"editor.defaultFormatter": "rvest.vs-code-prettier-eslint",
+	"editor.formatOnSaveMode": "file", // required to format on save
+	"files.autoSave": "onFocusChange", // optional but recommended
+	"vs-code-prettier-eslint.prettierLast": true, // set as "true" to run 'prettier' last not first
 	"editor.formatOnType": true,
 	"editor.formatOnPaste": true,
 	"editor.formatOnSave": true,
