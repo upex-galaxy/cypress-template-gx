@@ -19,6 +19,7 @@
 		"kisstkondoros.vscode-gutter-preview",
 		"mrrefactoring.polacode-fixed-edition",
 		"formulahendry.code-runner",
+		"yoavbls.pretty-ts-errors",
 		//! Formatters:
 		"dbaeumer.vscode-eslint",
 		"esbenp.prettier-vscode",
