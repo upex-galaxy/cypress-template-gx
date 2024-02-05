@@ -2,8 +2,8 @@
 #? 🤖Este Pipeline de CI se activa al hacer MERGE a la rama "QA" o "MAIN",
 #? 🧪Consiste en ejecutar TODOS los tests del Repo e importar los resultados a Jira!🚀
 #! 👩🏻‍🔬Este Pipeline de CI NO DEBE EDITARSE sin permiso del QA Lead.
-name: 🤖CI run Regression in QA🧪
-run-name: ${{github.actor}}👨🏻‍🔬 run Regression in ${{github.ref_name}}
+name: 🧪Pipeline Regression in QA
+run-name: ${{github.actor}}👨🏻‍🔬 triggered Regression in ${{github.ref_name}}
 
 on:
   push:
@@ -28,26 +28,24 @@ jobs:
       with:
         node-version: 20
 
-    - name: 💿Yarn Setup
-      uses: DerYeger/yarn-setup-action@master
-      with:
-        node-version: 20
+    - name: 🍙 Bun Setup
+      uses: oven-sh/setup-bun@v1
 
     - name: 🧬Install All Dependencies
       run: |
-        yarn
+        bun install
 
     - name: 🧪Cypress E2E Regression Test on ${{ matrix.browser }}
       uses: cypress-io/github-action@v4
       with:
         browser: ${{ matrix.browser }}
         command: | #!NO EDITAR. Es para correr todas las pruebas del Repo.
-          yarn regression:${{ matrix.browser }}
+          bun run regression:${{ matrix.browser }}
 
     - name: 📬Generate JUnit/Mocha Report for ${{ matrix.browser }}
       if: always()
       run: |
-        yarn ${{ matrix.browser }}:report
+        bun run ${{ matrix.browser }}:report
 
     - name: 📦️ Set testExecKey for Jira XRay
       if: always()
@@ -61,8 +59,18 @@ jobs:
           echo "TXID=GX3-1528" >> $GITHUB_OUTPUT
         fi
 
-    - name: ✅Import Test Results to Xray TX -- ${{ env.TXID }} (${{ matrix.browser }})
+    - name: ✅Check if XRAY_CLIENT is Defined
       if: always()
+      run: |
+        if [[ -z "${{ secrets.XRAY_CLIENT_ID }}" ]]; then
+          echo "XRAY_CLIENT_ID is not set. Please set it in the repository secrets to enable Slack notifications."
+        fi
+        if [[ -z "${{ secrets.XRAY_CLIENT_SECRET }}" ]]; then
+          echo "XRAY_CLIENT_SECRET is not set. Please set it in the repository secrets to enable Slack notifications."
+        fi
+
+    - name: ✅Import Test Results to Xray TX -- ${{ env.TXID }} (${{ matrix.browser }})
+      if: env.XRAY_CLIENT != '' && env.XRAY_SECRET != ''
       uses: mikepenz/xray-action@v3
       with: #EDITAR AQUÍ EL TEST EXECUTION DE JIRA DONDE SE CARGARÁN LOS TESTS:
         username: ${{secrets.XRAY_CLIENT_ID}}
@@ -73,6 +81,8 @@ jobs:
         projectKey: 'GX3' #? this is the UPEX GALAXY LEVEL 
       env:
         TXID: ${{ steps.setTestExecKey.outputs.TXID }}
+        XRAY_CLIENT: ${{ secrets.XRAY_CLIENT_SECRET }}
+        XRAY_SECRET: ${{ secrets.XRAY_CLIENT_SECRET }}
 
     - name: 📊Upload Artifact ${{ matrix.browser }} Mochawesome Report
       if: always()
@@ -87,13 +97,19 @@ jobs:
     if: always()
     runs-on: ubuntu-latest
     steps:
+    - name: 🔔Check if SLACK_WEBHOOK is Defined
+      run: |
+        if [[ -z "${{ secrets.SLACK_WEBHOOK }}" ]]; then
+          echo "SLACK_WEBHOOK is not set. Please set it in the repository secrets to enable Slack notifications."
+        fi
+
     - name: 🔔Slack Notification of Done
-      if: always()
+      if: env.SLACK_WEBHOOK != ''
       uses: rtCamp/action-slack-notify@v2
       env:
         SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
         SLACK_USERNAME: Ari✨
-        SLACK_MESSAGE: ':test_tube: CYPRESS-BLACKHOLE: REGRESSION RESULTS IMPORTED TO JIRA :rocket:'
+        SLACK_MESSAGE: ':test_tube: CYPRESS: REGRESSION RESULTS IMPORTED TO JIRA :rocket:'
         SLACK_COLOR: ${{ job.status }}
         SLACK_ICON: https://image.cdn2.seaart.ai/2023-12-06/clo9g0h4msbc73ac2sog/99e1abc36f32945cd4bacf5ee7448e96194545f7_high.webp
 
