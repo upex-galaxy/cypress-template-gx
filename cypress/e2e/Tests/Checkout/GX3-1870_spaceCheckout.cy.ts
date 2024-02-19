@@ -37,17 +37,15 @@ describe('GX3-1870: SpaceBeyond | Booking | Book a Destination in Checkout', () 
 			});
 			cy.url().should('include', '/checkout');
 
-			spaceCheckoutPage
-				.checkoutPrice()
-				.invoke('text')
-				.then(checkoutPice => {
-					cy.log(this.cardTitle);
-					cy.log(this.cardDesc);
-					const expectedCardPrice = parseCurrencyNum(this.cardPrice);
-					const checkoutPiceValue = parseCurrencyNum(checkoutPice);
+			spaceCheckoutPage.checkoutPrice().invoke('text').as('checkoutPice');
+			cy.then(() => {
+				cy.log(this.cardTitle as string);
+				cy.log(this.cardDesc as string);
+				const expectedCardPrice = parseCurrencyNum(this.cardPrice as string);
+				const checkoutPiceValue = parseCurrencyNum(this.checkoutPice as string);
 
-					expect(checkoutPiceValue).equal(expectedCardPrice);
-				});
+				expect(checkoutPiceValue).equal(expectedCardPrice);
+			});
 		});
 	});
 });

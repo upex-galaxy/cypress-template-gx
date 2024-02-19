@@ -3,8 +3,8 @@ import createBundler from '@bahmutov/cypress-esbuild-preprocessor';
 import 'dotenv/config';
 
 export default defineConfig({
-	// @Ely: CYPRESS DASHBOARD PARA VER NUESTRAS EJECUCIONES EN LA WEB:
-	projectId: '7n2zun',
+	// @Ely: CYPRESS CLOUD : Aquí se configura el project id para ejecutar pruebas en https://cloud.cypress.io
+	projectId: '',
 	// 1280×720 is considered to be the most suitable screen resolution for the desktop website version:
 	viewportWidth: 1280,
 	viewportHeight: 720,
