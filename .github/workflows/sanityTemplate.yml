@@ -50,18 +50,8 @@ jobs:
       run: |
         bun run chrome:report
 
-    - name: ✅Check if XRAY_CLIENT is Defined
-      if: always()
-      run: |
-        if [[ -z "${{ secrets.XRAY_CLIENT_ID }}" ]]; then
-          echo "XRAY_CLIENT_ID is not set. Please set it in the repository secrets to enable Slack notifications."
-        fi
-        if [[ -z "${{ secrets.XRAY_CLIENT_SECRET }}" ]]; then
-          echo "XRAY_CLIENT_SECRET is not set. Please set it in the repository secrets to enable Slack notifications."
-        fi
-
     - name: ✅Import Test Results to Xray
-      if: env.XRAY_CLIENT != '' && env.XRAY_SECRET != ''
+      if: env.XRAY_CLIENT != '' && env.XRAY_SECRET != '' #? Corre este paso si las variables de entorno están definidas
       uses: mikepenz/xray-action@v3
       with: #OPCIONES PARA IMPORTAR LOS RESULTADOS DE PRUEBA A JIRA XRAY:
         username: ${{secrets.XRAY_CLIENT_ID}}
@@ -82,15 +72,8 @@ jobs:
         path: cypress/tests_reports/chrome_mocha_report
         retention-days: 15
 
-    - name: 🔔Check if SLACK_WEBHOOK is Defined
-      if: always()
-      run: |
-        if [[ -z "${{ secrets.SLACK_WEBHOOK }}" ]]; then
-          echo "SLACK_WEBHOOK is not set. Please set it in the repository secrets to enable Slack notifications."
-        fi
-
     - name: 🔔Slack Notification of Done
-      if: env.SLACK_WEBHOOK != ''
+      if: env.SLACK_WEBHOOK != '' #? Corre este paso si la variable de entorno está definida
       uses: rtCamp/action-slack-notify@v2
       env:
         SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}

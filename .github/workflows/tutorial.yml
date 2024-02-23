@@ -17,35 +17,35 @@ jobs:
     #* Este parámetro indica que se correrá en un Sistema Operativo. No cambiar.
     runs-on: ubuntu-latest
 
-    #todo: Aquí a continuación vamos a definir qué vamos a correr de Postman:
+    #todo: Aquí comienzan los pasos que se ejecutarán en este Job:
     steps:
     #* Este paso, copia y pega literalmente el repo que tenemos.
-    - name: 📘Checkout Repo
-      uses: actions/checkout@v3
-      #* el Name es opcional, e indica el nombre del Step. Uses es la dependencia.
+    - name: 💻Checkout #? el Name es opcional, e indica el nombre del Step. Uses es la dependencia.
+      uses: actions/checkout@v4
 
-    - name: 📦Set up Node.js
-      uses: actions/setup-node@v2
-      with:
-        node-version: 16
-        #* El with se usa para indicar qué parámetro se usa con la dependencia.
+    - name: 💿Install Node.js
+      uses: actions/setup-node@v4
+      with: #? El with se usa para indicar qué parámetro se usa con la dependencia.
+        node-version: 20
         #* Considera que el with dependerá del uso de la dependencia.
 
-    - name: 💾Installing Dependencies
+    - name: 🍙 Bun Setup
+      uses: oven-sh/setup-bun@v1
+      #? Este paso es para instalar el Bun, que es un gestor de dependencias de Oven. Recomiendo usarlo.
+
+    - name: 🧬Install All Dependencies
       run: |
-        npm ci
-        npm list
-      #* El CI en npm es buena práctica para instalar dependencias en lugar de npm i, y list es para listar y verlas.
+        bun install
+      #? Este paso es para instalar todas las dependencias del proyecto.
 
       #* Esta dependencia de CI es exclusiva de Cypress que nos permite ejecutar sin necesidad de hacer el build.
-      #! AQUÍ DEBES MODIFICAR el Test Suite a ejecutar.
-      #todo: Agrega el tu path de archivo cypress en el npm run file:
+      #! En este Step DEBES MODIFICAR el Test Suite a ejecutar.
     - name: 🧪Cypress Run Test Coverage in Chrome
       uses: cypress-io/github-action@v4
       with:
         browser: chrome
-        command: | #EDITAR AQUÍ EL ARCHIVO SUITE A EJECUTAR:
-          npm run file cypress/e2e/Tests/Elements/GX-10497-Buttons.cy.js
+        command: |
+          bun run test:chrome cypress/e2e/tests/checkout/addProductToCart.cy.js
 
     #* Esto es para guardar el reporte previamente generado y colocarlo en Github.
     - name: 📊Upload Artifact ☕Mochawesome HTML Report
@@ -54,18 +54,4 @@ jobs:
       with:
         name: mochaTest-report
         path: mochawesome-report
-    #* if: always() es un comando YML condicional: Si pasa o no el paso anterior, corre este Paso.
-
-    # #todo: IMPORTING JIRA...
-    # - name: ✅Import Test Results to Xray
-    #   if: always()
-    #   uses: mikepenz/xray-action@v2
-    #   with: #! EDITAR AQUÍ EL TEST EXECUTION (TX) DE JIRA DONDE SE CARGARÁN LOS TESTS:
-    #       username: ${{secrets.XRAY_CLIENT_ID}}
-    #       password: ${{secrets.XRAY_CLIENT_SECRET}}
-    #       testFormat: 'junit'
-    #       testPaths: 'reports/test-results.xml'
-    #       #todo: CAMBIA el TX por tu propio TX de tu tarea.
-    #       testExecKey: 'GX-1'
-    #       #todo: CAMBIA el ID del Proyecto del que pertenece tu tarea.
-    #       projectKey: 'GX'
+    #? el argumento "if: always()" es un comando condicional: significa que Si pasa exitosamente o no el paso anterior, corre este Paso.
