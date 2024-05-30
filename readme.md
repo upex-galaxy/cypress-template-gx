@@ -45,7 +45,7 @@ Ahora el Directorio de UPEX Galaxy, será mucho más simple.
 
 1. **Clona el Proyecto**:
     ```
-    git clone https://github.com/upex-galaxy/cypress-gx.git
+    git clone https://github.com/upex-galaxy/cypress-template-gx.git
     ```
 
 ---
